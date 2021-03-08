@@ -1,0 +1,4 @@
+{
+    "status": "INCORRECT_PARAMETERS",
+    "localized_message": "Not allowed to request more than 24h"
+}
