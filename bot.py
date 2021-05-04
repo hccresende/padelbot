@@ -7,6 +7,9 @@ import calendar
 from time import sleep
 from termcolor import colored
 from random import randint
+import notify2
+
+notify = True
 
 def is_weekend(today):
     try:
@@ -24,6 +27,9 @@ def date_check(date):
     # print("Hour: "+str(date.hour))
     if is_weekend(date):
         if date.hour > 9 and date.hour < 21:
+            if notify == True:
+                n = notify2.Notification('PadelBot', 'Timeslot on WEEKEND found!')
+                n.show()
             return True
     else:
         if date.hour >= 7 and date.hour < 8:
@@ -32,8 +38,9 @@ def date_check(date):
             return True
         else:
             return False
-    
 
+if notify == True:
+    notify2.init('PadelBot')
 format_string = "%Y-%m-%dT%H:%M:%S"
 
 today = date.today()
